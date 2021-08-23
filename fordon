@@ -1,0 +1,58 @@
+using System;
+
+namespace Projekt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Fordon fordon = new Fordon();
+            fordon.Tillverkare = "Opel";
+            Console.WriteLine(fordon.Tillverkare);
+            Fordon Objekt = new Fordon();
+            fordon.Modell = "Astra";
+            Console.WriteLine(fordon.Modell);
+            Fordon fordon = new Fordon();
+            år.Ålder = 15;
+            Console.WriteLine(år);
+        }
+    }
+}
+
+using System;
+class Fordon{
+    private string tillverkare;
+    public string Tillverkare
+    //Creating Name property
+        {
+            get //get method for returning value
+            {
+                return tillverkare;
+            }
+            set // set method for storing value in name field.
+            {
+                tillverkare = value;
+            }
+        }
+          private string modell;
+    public string Modell
+    {
+    get {
+        return modell;
+    }
+    set {
+        modell = value;
+    }
+    }
+    private int ålder;
+    public int Ålder
+    {
+        get {
+            return ålder;
+
+        }
+        set {
+            ålder = value;
+        }
+    }
+}
