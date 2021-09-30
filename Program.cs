@@ -18,23 +18,23 @@ namespace PersonElevAnställd
               Console.Write("Ange lön: ");
             int lön=int.Parse(Console.ReadLine());
            string allt = namn + personnr + lön;
-           string elevinput = namn + personnr;
+           
             Console.WriteLine(allt);*/
          
           /*  foreach(var item in plist)
             {
                 Console.WriteLine(item);
-            }
-  */
+            }*/
+    List<Person> plist = new List<Person>();
               int menyval = -1;
           while (menyval != 0)
           {
-            List<Person> plist = new List<Person>();
+          
                Console.WriteLine("1 lägg till elev.");
                Console.WriteLine("2 lägg till anställd");
-               Console.WriteLine("3 skriv upp alla anställda.");
-               Console.WriteLine("4 skriv upp alla elever.");
-               Console.WriteLine("5 Avsluta programmet");
+               Console.WriteLine("3 skriv upp alla elever.");
+               Console.WriteLine("4 skriv upp alla anställda.");
+                Console.WriteLine("5 Avsluta programmet");
                int meny = int.Parse(Console.ReadLine());
                if (meny==2)//Varför 2 ==
                {
@@ -45,8 +45,7 @@ namespace PersonElevAnställd
             string personnr=Console.ReadLine();
               Console.Write("Ange lön: ");
                   int lön=int.Parse(Console.ReadLine());
-              Console.WriteLine("Ange utbildningsprogram ");
-            string program=Console.ReadLine();
+                  plist.Add(new Anställd(namn, personnr, lön));
                }
                if(meny==1)
                {
@@ -57,14 +56,28 @@ namespace PersonElevAnställd
             Console.Write("Ange antagningsår ");
             int år=int.Parse(Console.ReadLine());
             Console.WriteLine("Ange Utbildningsprogram");
-            string program=Console.ReadLine();
+            string prog=Console.ReadLine();
+            plist.Add(new Elev(namn, personnr, år, prog));
+          
                }
                if(meny==3)
                {
-                  foreach(var item in plist)
+                  foreach(Elev item in plist)
             {
                 Console.WriteLine(item);
             }
+
+               }
+               if(meny==4)
+               {
+                   foreach (Anställd item in plist)
+                   {
+                       Console.WriteLine(item);
+                   }
+               }
+               if(meny==6)
+               {
+                   break;
                }
           }
         }
