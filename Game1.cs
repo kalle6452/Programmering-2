@@ -2,15 +2,16 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace uppgift_1
+namespace monogameSprite
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-       private  SpriteBatch spriteBatch;
- Texture2D mario;
-Vector2 marioPosition;
-float marioSpeed;
+        private SpriteBatch _spriteBatch;
+        Texture2D link;
+        Vector2 linkPos;
+        Rectangle linkRect;
+        private Sprite sprite1;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -20,30 +21,29 @@ float marioSpeed;
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-marioPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
-_graphics.PreferredBackBufferHeight / 2);
-marioSpeed = 100f;
+           // sprite1 = new Sprite(Texture2D texture, Vector2 position, Rectangle hitbox);
+            
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-  mario = Content.Load<Texture2D>("mario");
-            // TODO: use this.Content to load your game content here
-            
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            var texture = Content.Load<Texture2D>("link");
+sprite1 = new Sprite(texture, position, hitbox);
+            link=Content.Load<Texture2D>("link");
+           linkPos=new Vector2(150,250);
+           linkRect=new Rectangle((int)linkPos.X, (int)linkPos.Y, 200, 200);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+              
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
+                    Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-var kstate = Keyboard.GetState();
-if(kstate.IsKeyDown(Keys.Right))
-    marioPosition.X += marioSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             base.Update(gameTime);
         }
 
@@ -51,59 +51,13 @@ if(kstate.IsKeyDown(Keys.Right))
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-
-spriteBatch.Begin();
-    spriteBatch.Draw(mario, marioPosition, Color.White);
-    spriteBatch.End();
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(link,linkRect,Color.White);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
     }
 }
 
-
-
-using System;
-
-namespace projekt
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            
-        }
-    }
-}
-
-
-
-class Triangel : Shape
-{
-    public area {
-        return width * height;
-    }
-    public Triangel(int width, int height): base(width, height)
-    {
-
-    }
-}
-/*{
-   public int Area{get;}
-   public int Circumferance {get;}
-}*/
-
-
-class Shape
-{
-    public int Height{get; set;}
-    public int Width{get; set;}
-
-public Shape(int width, int height)
-{
-    height = Height;
-    width = Width;
-}
-}
+//https://www.youtube.com/watch?v=F_q7XFmJhgs
