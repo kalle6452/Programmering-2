@@ -30,8 +30,7 @@ namespace monogameSprite
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            var texture = Content.Load<Texture2D>("link");
-sprite1 = new Sprite(texture, position, hitbox);
+sprite1 = new Sprite(Content.Load<Texture2D>("link"));
             link=Content.Load<Texture2D>("link");
            linkPos=new Vector2(150,250);
            linkRect=new Rectangle((int)linkPos.X, (int)linkPos.Y, 200, 200);
